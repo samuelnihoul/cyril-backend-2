@@ -1,4 +1,5 @@
 import { google } from 'googleapis'
+import { type NextRequest } from 'next/server'
 
 const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -10,11 +11,16 @@ const client = await auth.getClient();
 // Instance of Google Sheets API
 const googleSheets = google.sheets({ version: "v4", auth: client });
 
-export const dynamic = "force-dynamic"
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+    const searchParams = request.nextUrl.searchParams
+    const sheet = searchParams.get('sheet')
     console.log("GET")
-    console.log(request.body)
-    const body = await request.json()
-    const sheet = body.sheet
-    return Response.json({ "title": "Sheet Data" })
+    console.log(sheet)
+    const getRows = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId: sheet,
+        range: "Sheet1!A:Z",
+    });
+    console.log(getRows)
+    return Response.json({ "data": getRows.data.values })
 }

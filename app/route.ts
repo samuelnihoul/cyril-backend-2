@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     const getRows = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId: sheet,
-        range: "Sheet1!A:Z",
+        range: "Sheet1!A3:Z3",
     });
     console.log(getRows)
     return Response.json({ "data": getRows.data.values })

@@ -14,12 +14,13 @@ const googleSheets = google.sheets({ version: "v4", auth: client });
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const sheet = searchParams.get('sheet')
+    const line_number = searchParams.get("line")
     console.log("GET")
     console.log(sheet)
     const getRows = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId: sheet,
-        range: "Sheet1!A3:Z3",
+        range: `Sheet1!A${line_number}:Z${line_number}`,
     });
     console.log(getRows)
     return Response.json({ "data": getRows.data.values })

@@ -34,3 +34,9 @@ URL params:
 - sheet (the shit ID)
 - line (the line number)
 
+## appendix
+
+### URL params
+You can pass parameters to web requests by postfixing the url with a "?" and then content following the paramName=paramValue&param2=p2&param3=p3 format.
+
+

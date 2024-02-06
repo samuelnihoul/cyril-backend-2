@@ -8,6 +8,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 pnpm dev
 ```
 
+The server has live update capabilities and does not shut down on uncaught errors.
+
 2. add the service account as an editor of your sheet.s. You can find it in credentials.json (the email address).
 
 You can start editing the app by modifying `app/route.tsx`. The page auto-updates as you edit the file.

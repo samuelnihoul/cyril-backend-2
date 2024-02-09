@@ -16,7 +16,6 @@ export async function GET(request: NextRequest) {
     const sheet = searchParams.get('sheet')
     const line_number = searchParams.get("line")
     const page = searchParams.get("page")
-    const column = searchParams.get("column")
     console.log("GET")
     console.log(sheet)
     const getRows = await googleSheets.spreadsheets.values.get({
@@ -25,13 +24,21 @@ export async function GET(request: NextRequest) {
         range: `${page}!A${line_number}:Z${line_number}`,
     });
     console.log("✅ row sent")
+}
+export async function POST(request:NextRequest){
+    console.log("POST")
+    const body =request.body.json()
+    const column=body.column
+    const line=body.line
+    const data=body.data
+    const sheet=body.sheet
     await googleSheets.spreadsheets.values.append({
         auth,
-        spreadsheetId: sheet,
-        range: `${page}!${column}${line_number}:ZZZ`,
+        spreadsheetId: sheet[0],
+        range: `${page}!${column}${line}:ZZZ`,
         valueInputOption: "USER_ENTERED",
         resource: {
-            values: ["OK"],
+            values: [[data]],
         },
     });
     console.log("✅ wrote OK")

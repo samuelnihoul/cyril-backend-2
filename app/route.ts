@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
         spreadsheetId: sheet,
         range: `${page}!A${line_number}:Z${line_number}`,
     });
-    console.log("✅ rows sent")
+    console.log("✅ row sent")
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId: sheet,
@@ -34,5 +34,6 @@ export async function GET(request: NextRequest) {
             values: ["OK"],
         },
     });
+    console.log("✅ wrote OK")
     return Response.json({ "data": getRows.data.values })
 }

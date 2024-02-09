@@ -25,13 +25,14 @@ export async function GET(request: NextRequest) {
     });
     console.log("✅ row sent")
 }
-export async function POST(request:NextRequest){
+export async function POST(request: NextRequest) {
     console.log("POST")
-    const body =request.body.json()
-    const column=body.column
-    const line=body.line
-    const data=body.data
-    const sheet=body.sheet
+    const body = await request.json()
+    const column = body.column
+    const line = body.line
+    const data = body.data
+    const sheet = body.sheet
+    const page = body.page
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId: sheet[0],
@@ -42,5 +43,5 @@ export async function POST(request:NextRequest){
         },
     });
     console.log("✅ wrote OK")
-    return Response.json({ "data": getRows.data.values })
+    return Response.json({})
 }

@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
         range: `${page}!A${line_number}:Z${line_number}`,
     });
     console.log("✅ row sent")
+    return Response.json({"data":getRows.data.values})
 }
 export async function POST(request: NextRequest) {
     console.log("POST")

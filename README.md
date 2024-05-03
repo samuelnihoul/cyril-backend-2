@@ -12,7 +12,7 @@ pnpm dev
 The server has live update capabilities and does not shut down on uncaught errors.
 To shut down the server, press CTRL-C.
 
-For first installation:
+### For first installation:
 
 - add the service account as an editor of your sheet.s. You can find it in credentials.json (the email address).
 

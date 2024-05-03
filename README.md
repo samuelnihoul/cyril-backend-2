@@ -18,10 +18,11 @@ To shut down the server, press CTRL-C.
 
 - run `pmpm i` before `pnpm dev`
 
+## General
 You can start editing the app by modifying `app/route.tsx`. The page auto-updates as you edit the file.
 
 
-## routes
+## Routes
 
 ### /
 #### GET

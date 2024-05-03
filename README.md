@@ -9,9 +9,6 @@
 pnpm dev
 ```
 
-The server has live update capabilities and does not shut down on uncaught errors.
-To shut down the server, press CTRL-C.
-
 ### For first installation:
 
 - add the service account as an editor of your sheet.s. You can find it in credentials.json (the email address).
@@ -19,7 +16,11 @@ To shut down the server, press CTRL-C.
 - run `pmpm i` before `pnpm dev`
 
 ## General
-You can start editing the app by modifying `app/route.tsx`. The page auto-updates as you edit the file.
+- You can start editing the app by modifying `app/route.tsx`. The page auto-updates as you edit the file.
+
+- To shut down the server press Ctrl-C in the terminal.
+
+- You can see some logs in the terminal when you send requests (errors, successes, infos...).
 
 
 ## Routes

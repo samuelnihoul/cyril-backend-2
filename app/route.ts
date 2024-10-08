@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     const data = body.data
     const sheet = body.sheet
     const page = body.page
-    await googleSheets.spreadsheets.values.append({
+    await googleSheets.spreadsheets.values.update({
         auth,
         spreadsheetId: sheet[0],
         range: `${page}!${column}${line}:ZZZ`,
